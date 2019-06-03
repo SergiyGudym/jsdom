@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <img name="slide" width="800" height="480">
+
+    <script>
+        let i = 0; // start point
+        let imagesArr = [];
+        let time = 3000;
+
+        // images list
+        imagesArr[0] = 'img1.jpeg';
+        imagesArr[1] = 'img2.jpg';
+        imagesArr[2] = 'img3.jpg';
+        imagesArr[3] = 'img4.jpg';
+        imagesArr[4] = 'img5.jpeg';
+
+        // slider
+        function slider() {
+            document.slide.src = imagesArr[i];
+
+            if (i < imagesArr.length - 1) {
+                i++;
+            } else {
+                i = 0;
+            }
+
+            setTimeout('slider()', time);
+        }
+
+        window.onload = slider;
+    </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sites generator</title>
+    <style>
+        header {
+            width: 100%;
+            height: 150px;
+            border: 1px dashed black;
+            display: flex;
+            align-items: center;
+        }
+
+        footer {
+            width: 100%;
+            height: 300px;
+            border: 1px dashed black;
+        }
+    </style>
+</head>
+<body>
+    <div id="generator">
+        <input type="color" name="generator" id="color"><label for="color">Выберите цвет рамки элементов</label><br>
+        <label for="header"><input type="checkbox" name="generator" id="header">Header</label><br>
+        <label for="sidebar"><input type="checkbox" name="generator" id="sidebar">Sidebar</label><br>
+        <label for="section1"><input type="checkbox" name="generator" id="section1">Первая секция</label><br>
+        <label for="section2"><input type="checkbox" name="generator" id="section2">Вторая секция</label><br>
+        <label for="footer"><input type="checkbox" name="generator" id="footer">Footer</label><br>
+        <button onclick="generate()">Generate</button>
+    </div>
+
+    <div style="border: 3px solid black" id="test"></div>
+    
+    
+    <script>
+         // site generation function
+        function generate() {
+        let col = document.getElementById('color');
+        let header = document.getElementById('header');
+        let sidebar = document.getElementById('sidebar');
+        let section1 = document.getElementById('section1');
+        let section2 = document.getElementById('section2');
+        let footer = document.getElementById('footer');
+        let test = document.getElementById('test');
+        test.style.borderColor = col.value;
+            
+            // header generation
+            if (header.checked) {
+                let head1 = document.createElement('header');
+                head1.className = "header";
+                head1.innerHTML = "<strong>Header</strong> Тут должен быть Ваш хедер.";
+                head1.style.color = col.value;
+                test.appendChild(head1);
+
+            }
+
+            // sidebar generation
+            if (sidebar.checked) {
+                let side = document.createElement('div');
+                side.className = "side";
+                side.innerHTML = "<strong>Ура!</strong> Тут должен быть Ваш сайдбар.";
+                side.style.color = col.value;
+                test.appendChild(side);
+            }
+
+            // section1 generation
+            if (section1.checked) {
+                let sect1 = document.createElement('div');
+                sect1.className = "sect1";
+                sect1.innerHTML = "<strong>Ура!</strong> Тут должен быть Ваш первый раздел.";
+                sect1.style.color = col.value;
+                test.appendChild(sect1);
+            }
+
+            // section2 generation
+            if (section1.checked) {
+                let sect2 = document.createElement('div');
+                sect2.className = "sect2";
+                sect2.innerHTML = "<strong>Ура!</strong> Тут должен быть Ваш второй раздел.";
+                sect2.style.color = col.value;
+                test.appendChild(sect2);
+            }
+
+            // footer generation
+            if (section1.checked) {
+                let foot = document.createElement('div');
+                foot.className = "foot";
+                foot.innerHTML = "<strong>Ура!</strong> Тут должен быть Ваш футер.";
+                foot.style.color = col.value;
+                test.appendChild(foot);
+            }
+        }
+
+    </script>
+</body>
+</html>
