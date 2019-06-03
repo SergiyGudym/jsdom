@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="test">Test</div>
+
+    <script>
+        let test = document.getElementById('test');
+        // 1
+        test.className = "lala"; // или classList.add('lala')
+        test.classList.add('lala2');
+        test.classList.add('lala3');
+
+        // 2
+        test.classList.remove("lala");
+
+        // 3
+        test.classList.contains('lala');
+
+        // 4
+        test.classList.toggle('lala');
+
+        // 5
+        let number = test.classList.length;
+
+        // 6
+        let classes = test.className.split(' ');
+        for (i=0; i < classes.length; i++) {
+            alert(classes[i]);
+        };
+
+        // 7
+        test.style.color = 'red';
+        test.style.fontSize = '30px';
+        test.style.border = '1px solid black';
+
+        // 8
+        let append = document.getElementsByClassName('lala');
+        append.innerHTML = ""
+    </script>
+</body>
+</html>
