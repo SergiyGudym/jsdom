@@ -9,39 +9,155 @@
 <body>
     <div id="test">Test</div>
 
+    <ol>
+        <li>Окончанием</li>
+        <li>данного</li>
+        <li>предложения</li>
+        <li>является</li>
+    </ol>
+
+    <ul>
+        <li>Окончанием</li>
+        <li id="tekst">данного</li>
+        <li>предложения</li>
+        <li>является</li>
+    </ul>
     <script>
         let test = document.getElementById('test');
-        // 1
+        // 1 Дан элемент #test. Добавьте ему класс lala. 
         test.className = "lala"; // или classList.add('lala')
         test.classList.add('lala2');
         test.classList.add('lala3');
 
-        // 2
+        // 2 Дан элемент #test. Удалите у него класс lala. 
         test.classList.remove("lala");
 
-        // 3
+        // 3 Дан элемент #test. Проверьте наличие у него класса lala. 
         test.classList.contains('lala');
 
-        // 4
+        // 4 Дан элемент #test. Добавьте ему класс lala, если его нет и удалите - если есть. 
         test.classList.toggle('lala');
 
-        // 5
+        // 5 Дан элемент #test. Узнайте количество его классов. 
         let number = test.classList.length;
 
-        // 6
+        // 6 Дан элемент #test. Выведите последовательно алертом его классы. 
         let classes = test.className.split(' ');
         for (i=0; i < classes.length; i++) {
-            alert(classes[i]);
+            console.log(classes[i]); // было алерт, заманался тестить и закрывать диалоговые окна
         };
 
-        // 7
-        test.style.color = 'red';
-        test.style.fontSize = '30px';
+        // 7 Дан элемент #test. Сделайте его красного цвета, размером 30px, добавьте ему границу. Решите задачу с помощью свойства style 
+        test.style.color = 'red'; 
+        test.style.fontSize = '30px'; 
         test.style.border = '1px solid black';
 
-        // 8
-        let append = document.getElementsByClassName('lala');
-        append.innerHTML = ""
+// !!!       // 8 Даны элементы с классом lala. Добавьте каждому элементу в конец название его тега в нижнем регистре. 
+        /*let teg = document.getElementsByClassName('lala');
+        for (i=0; i < teg.length; i++) {
+            let p = document.createElement('p');
+            p.innerHTML = teg[i].tagName;
+            p.style.textTransform = "lowercase";
+            //console.log(p);
+            teg.appendChild(p);
+            /*let tegName = teg[i].tagName;
+           
+            teg.appendChild(tegName);
+            /*
+                var div = document.createElement('div');
+                div.className = "alert alert-success";
+                div.innerHTML = "<strong>Ура!</strong> Вы прочитали это важное сообщение.";            
+            */
+
+            /* Решение от Ярослава
+
+
+                let teg = document.getElementsByClassName('lala');
+    for (i=0; i < teg.length; i++) {
+        let p = document.createElement('p');
+        p.innerHTML = teg[i].tagName;
+        p.style.textTransform = "lowercase";
+        //console.log(p);
+        document.body.appendChild(p);
+    }
+
+
+
+    */
+        //}
+
+        // 9 Дан ol. Вставьте ему в конец li с текстом 'Точка'. 
+        let newLi = document.createElement('li');
+        newLi.innerHTML = 'точка.';
+        document.querySelector('ol').appendChild(newLi);
+
+        // 10 Дан ul. Дан массив. Вставьте элементы этого массива в конец ul так, чтобы каждый элемент стоял в своем li. 
+        let arr = ["запята", "точика", "апостроф"];
+        for (i = 0; i < arr.length; i++) {
+            let newL = document.createElement('li');
+            newL.innerHTML = arr[i];
+            document.querySelector('ul').appendChild(newL);
+        }
+
+// !!!  // 11 Дан ul. Дан массив. Вставьте элементы этого массива в конец ul так, чтобы каждый элемент стоял в своем li. 
+        // Сделайте так, чтобы к вставляемым li было привязано следующее событие: по нажатию на li она должна вывести на экран свой текст. 
+        // алертом походу, но выведу я в консоль
+
+        // 12 Дан элемент ul, а в нем li #test (вставил текст, так как у меня уже есть айди тест). Вставьте перед элементом #test новую li с текстом 'сделано'. 
+        let newList = document.createElement('li');
+        newList.innerHTML = 'сделано (задача №12)';
+        let arrLi = document.querySelector('ul');
+        arrLi.insertBefore(newList, arrLi.children['tekst']); // случайно вышло, я не при чем :)
+
+        // 13 Дан элемент #test. Вставьте перед ним span с текстом 'сделано'. 
+        let sp = document.createElement('span');
+        sp.innerHTML = 'сделано (задача №13)';
+        let body = document.querySelector('body');
+        body.insertBefore(sp, body.children["test"]);
+
+        // 14 Дан элемент #test. Вставьте после него span с текстом 'сделано'. 
+        let sp1 = document.createElement('span');
+        sp1.innerHTML = 'сделано (задача №14)';
+
+        function insertAfter(el, referenceNode) {
+            referenceNode.parentNode.insertBefore(el, referenceNode.nextSibling);
+        }
+        insertAfter(sp1, test); // почему с завода сразу так нельзя было
+
+        /* Код для вставки до элемента (удобненько)
+        
+            function insertBefore(el, referenceNode) {
+            referenceNode.parentNode.insertBefore(el, referenceNode);
+        }
+
+            // example
+            var newEl = document.createElement('div');
+            newEl.innerHTML = '<p>Hello World!</p>';
+
+            var ref = document.querySelector('div.before');
+
+            insertBefore(newEl, ref);
+        */
+
+
+        // 15 Дан элемент #test. Вставьте ему в начало span с текстом 'сделано'. 
+ 
+
+        // 16 Дан элемент #test. Вставьте ему в конец span с текстом 'сделано'. 
+        let sp3 = document.createElement('span');
+        sp3.innerText = ' сделано (задача №16)';
+        test.appendChild(sp3);
+        // 17 Дан элемент #test. Найдите первого потомка этого элемента и сделайте его текст красного цвета. 
+
+        // 18 Дан элемент #test. Найдите последнего потомка этого элемента и сделайте его текст красного цвета. 
+        
+        // 19 Дан элемент #test. Найдите всех потомков этого элемента и добавьте им в конец текст '?' 
+
+        // 20 Дан элемент #test. Найдите его соседа сверху и добавьте ему в конец текст '?'. 
+
+        // 21 Дан элемент #test. Найдите его соседа снизу и добавьте ему в конец текст '?'. 
+
+        // 22 Дан элемент #test. Найдите его соседа снизу его соседа снизу (следующий элемент за соседним) и добавьте ему в конец текст '?'.
     </script>
 </body>
 </html>
